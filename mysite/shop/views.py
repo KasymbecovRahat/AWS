@@ -16,6 +16,7 @@ class ProductListViewSet(viewsets.ModelViewSet):
     filterset_class = ProductFilter
     ordering_fields = ['price', 'date']
 
+
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -35,21 +36,15 @@ class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerialazer
 
 
-
-
-
-
 class UserProfileViewSet(viewsets.ModelViewSet):
     queryset =  UserProfile.objects.all()
     serializer_class = UserProfileSerialazer
 
 
-
-
-
 class ProductPhotoViewSet(viewsets.ModelViewSet):
     queryset = ProductPhoto.objects.all()
     serializer_class = ProductPhotoSerialazer
+
 
 class RaitingViewSet(viewsets.ModelViewSet):
     queryset = Raiting.objects.all()
@@ -59,7 +54,6 @@ class RaitingViewSet(viewsets.ModelViewSet):
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Raiting.objects.all()
     serializer_class = ReviewSerialazer
-
 
 
 class CartViewSet(viewsets.ModelViewSet):

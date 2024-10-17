@@ -2,7 +2,6 @@ from rest_framework import serializers
 from .models import *
 
 
-
 class CategorySerialazer(serializers.ModelSerializer):
     class Meta:
         model = Category
@@ -53,9 +52,11 @@ class ProductListSerialazer(serializers.ModelSerializer):
     product = ProductPhotoSerialazer(read_only=True, many=True)
     category = CategorySerialazer()
     owner = UserProfileSimpleSerialazer()
+    date_created = serializers.DateTimeField(format='%d-%m-%Y')
+
     class Meta:
         model = Product
-        fields = ['id','product_name','price','category','product', 'date_created','owner']
+        fields = ['id','product_name','price','category','product', 'date_created','owner','raitings']
 
 
 class ProductSerialazer(serializers.ModelSerializer):
@@ -64,8 +65,9 @@ class ProductSerialazer(serializers.ModelSerializer):
     reviews = ReviewSerialazer(read_only=True,many=True)
     product = ProductPhotoSerialazer(read_only=True,many=True)
     date_created = serializers.DateTimeField('%d-%m-%Y')
-    average_ratings = serializers.SerializerMethodField()
+    average_raitings = serializers.SerializerMethodField()
     owner = UserProfileSimpleSerialazer()
+
     class Meta:
         model = Product
         fields = ['id','product_name','category','description','product','video','price','activite',

@@ -7,9 +7,11 @@ class ProductPhotoInline(admin.TabularInline):
     model = ProductPhoto
     extra = 1
 
+
 @admin.register(Product)
 class ProductAdmin(TranslationAdmin):
     inlines = [ProductPhotoInline]
+
     class Media:
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
@@ -19,7 +21,6 @@ class ProductAdmin(TranslationAdmin):
         css = {
             'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
         }
-
 
 
 admin.site.register(UserProfile)
